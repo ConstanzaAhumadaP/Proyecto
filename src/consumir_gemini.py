@@ -81,6 +81,6 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     return costo
 
 try:
-    print(obtener_dato_de_prueba("Confirma en una frase corta que esta conexión funciona"))
+    print(obtener_dato_de_prueba("Confirma que la carga y datos funciona correctamente"))
 except (ValueError, RuntimeError) as error:
     print("No se pudo completar la operación: ", error)
