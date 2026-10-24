@@ -6,10 +6,11 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 
 Estos pasos se completan de forma progresiva a lo largo de la Unidad U1.2, no todos el mismo día:
 
-1. Descarga este archivo comprimido (adjunto en la plataforma) y descomprímelo en tu computador. Inicializa el control de versiones sobre esa carpeta y registra tu primer commit con esta estructura base, tal como llegó, antes de modificar nada.
-2. Crea tu entorno virtual de Python (por ejemplo, con `venv`) y actívalo.
-3. Instala las dependencias que necesites y regístralas en `requirements.txt` (al inicio puede estar vacío o con muy pocas).
-4. Copia `.env.example` a un archivo nuevo llamado `.env`, y completa ahí tus credenciales reales (llaves de API, tokens). El archivo `.env` nunca se sube al repositorio: ya está excluido en `.gitignore`.
+1. Clona este repositorio utilizando el comando "git clone https://github.com/ConstanzaAhumadaP/Proyecto.git"
+2. Crea tu entorno virtual de Python usando el comando <python3 -m venv venv> en tu terminal (por ejemplo, con `venv`) y actívalo usando el comando <source venv/bin/activate>.
+3. Instala las dependencias del proyecto usando el comando <pip install -r requirements.txt> para poder usarlas en la aplicación.
+4. Copia `.env.example` a un archivo nuevo llamado `.env` usando el comando <cp .env.example .env>, y completa ahí usando tu API.
+5. Para ejecutar la "aplicación", usa el comando <python3 src/consumir_gemini.py>.
 
 ## Estructura de carpetas
 
