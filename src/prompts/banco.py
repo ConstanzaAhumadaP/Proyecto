@@ -53,16 +53,16 @@ BANCO_DE_PROMPT = [
             "Turno B: el molino SAG operó 10 horas con 3 detenciones. "
             "Se procesaron 11.500 toneladas."
         ),
-        "claves_esperadas": ["equipo", "horas_operacion", "detenciones", "toneladas"],
+        "claves_esperadas": ["equipos", "horas_operacion", "detenciones", "toneladas"],
         "response_schema": {
             "type": "OBJECT",
             "properties": {
-                "equipo": {"type": "STRING"},
+                "equipos": {"type": "STRING"},
                 "horas_operacion": {"type": "NUMBER"},
                 "detenciones": {"type": "NUMBER"},
                 "toneladas": {"type": "NUMBER"},
             },
-            "required": ["equipo", "horas_operacion", "detenciones", "toneladas"],
+            "required": ["equipos", "horas_operacion", "detenciones", "toneladas"],
         },
     },
 ]
