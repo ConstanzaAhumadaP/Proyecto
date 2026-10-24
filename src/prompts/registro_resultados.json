@@ -1,0 +1,14 @@
+{
+  "desviacion_produccion": {
+    "exitos": 3,
+    "intentos": 3
+  },
+  "clasificar_incidente": {
+    "exitos": 3,
+    "intentos": 3
+  },
+  "extraer_datos_reporte": {
+    "exitos": 3,
+    "intentos": 3
+  }
+}
