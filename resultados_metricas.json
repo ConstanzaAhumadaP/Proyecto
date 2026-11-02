@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "consulta": "¿Cuánto mineral se extrajo el 2024-01-01 en el turno A?",
+    "referencia": "El 2024-01-01 en el turno A se extrajeron 15.200 Tms de mineral.",
+    "respuesta": "Se extrajeron 3.265 Tms de mineral en el turno A.",
+    "precision": 0.9,
+    "cobertura": 0.75,
+    "f1": 0.8181818181818182
+  },
+  {
+    "id": 2,
+    "consulta": "¿Cuánto lastre se movió el 2024-01-02 en el turno B?",
+    "referencia": "El 2024-01-02 en el turno B se movieron 88.500 Tms de lastre.",
+    "respuesta": "El 2024-01-02 en el turno B se movieron 201.999 Tms de lastre.",
+    "precision": 0.9166666666666666,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.9166666666666666
+  },
+  {
+    "id": 3,
+    "consulta": "¿Cuánto mineral se extrajo el 2024-01-03 en el turno B?",
+    "referencia": "El 2024-01-03 en el turno B se extrajeron 14.707 Tms de mineral.",
+    "respuesta": "El 2024-01-03 en el turno B se extrajeron 14.707 Tms de mineral.",
+    "precision": 1.0,
+    "cobertura": 1.0,
+    "f1": 1.0
+  },
+  {
+    "id": 4,
+    "consulta": "¿Cuál fue el movimiento total de mina el 2024-01-04 en el turno A?",
+    "referencia": "El movimiento total de mina fue de 245.100 Tms.",
+    "respuesta": "El movimiento total de mina fue de 202.039 Tms.",
+    "precision": 0.8888888888888888,
+    "cobertura": 0.8888888888888888,
+    "f1": 0.8888888888888888
+  },
+  {
+    "id": 5,
+    "consulta": "¿Qué grupo y turno tuvo la mayor extracción total el 2024-01-05?",
+    "referencia": "El grupo G4 en el turno A tuvo la mayor extracción total, con 206.237 Tms.",
+    "respuesta": "El grupo G4 y turno A logró una extracción total de 206.237 Tms.",
+    "precision": 0.6923076923076923,
+    "cobertura": 0.6,
+    "f1": 0.6428571428571429
+  },
+  {
+    "id": 6,
+    "consulta": "¿Cuál fue el movimiento total de mina del grupo G2 en el turno B el 2024-01-05?",
+    "referencia": "El movimiento total de mina fue de 260.723 Tms.",
+    "respuesta": "El movimiento total del grupo G2 fue de 260.723 Tms.",
+    "precision": 0.7,
+    "cobertura": 0.7777777777777778,
+    "f1": 0.7368421052631577
+  },
+  {
+    "id": 7,
+    "consulta": "¿Cuánto material alimentó el chancado el 2024-01-06 en el turno B?",
+    "referencia": "La alimentación a chancado fue de 60.866 Tms.",
+    "respuesta": "La alimentación a chancado fue de 60.866 Tms el 2024-01-06 en el turno B.",
+    "precision": 0.5714285714285714,
+    "cobertura": 1.0,
+    "f1": 0.7272727272727273
+  },
+  {
+    "id": 8,
+    "consulta": "¿Cuánto material alimentó el chancado el 2024-01-07 en el turno A?",
+    "referencia": "La alimentación a chancado fue de 58.900 Tms.",
+    "respuesta": "La alimentación a chancado el 2024-01-07 en el turno A fue de 48.952 Tms.",
+    "precision": 0.5,
+    "cobertura": 0.875,
+    "f1": 0.6363636363636364
+  },
+  {
+    "id": 9,
+    "consulta": "¿Cuánto lastre se extrajo el 2024-01-08 en el turno B?",
+    "referencia": "El 2024-01-08 en el turno B se extrajeron 92.080 Tms de lastre.",
+    "respuesta": "El 2024-01-08 en el turno B se extrajeron 92.080 Tms de lastre.",
+    "precision": 1.0,
+    "cobertura": 1.0,
+    "f1": 1.0
+  },
+  {
+    "id": 10,
+    "consulta": "¿Cuánto mineral se extrajo el 2024-01-09 en el turno B?",
+    "referencia": "El 2024-01-09 en el turno B se extrajeron 13.800 Tms de mineral.",
+    "respuesta": "El 2024-01-09 en el turno B se extrajeron 27.962 Tms de mineral.",
+    "precision": 0.9166666666666666,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.9166666666666666
+  },
+  {
+    "id": 11,
+    "consulta": "¿Cuánto lastre se extrajo el 2024-01-10 en el turno A?",
+    "referencia": "El 2024-01-10 en el turno A se extrajeron 95.400 Tms de lastre.",
+    "respuesta": "El 2024-01-10 en el turno A se extrajeron 155.690 Tms de lastre.",
+    "precision": 0.9166666666666666,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.9166666666666666
+  },
+  {
+    "id": 12,
+    "consulta": "¿Cuál fue el movimiento total de mina el 2024-01-11 en el turno B?",
+    "referencia": "El movimiento total de mina fue de 252.000 Tms.",
+    "respuesta": "El movimiento total de mina fue de 190.563 Tms.",
+    "precision": 0.8888888888888888,
+    "cobertura": 0.8888888888888888,
+    "f1": 0.8888888888888888
+  },
+  {
+    "id": 13,
+    "consulta": "¿Cuánto material alimentó el chancado el 2024-01-12 en el turno A?",
+    "referencia": "La alimentación a chancado fue de 62.100 Tms.",
+    "respuesta": "La alimentación a chancado el 2024-01-12 en el turno A fue de 0 Tms.",
+    "precision": 0.5,
+    "cobertura": 0.875,
+    "f1": 0.6363636363636364
+  },
+  {
+    "id": 14,
+    "consulta": "¿Cuánto mineral se extrajo el 2024-01-13 en el turno B?",
+    "referencia": "El 2024-01-13 en el turno B se extrajeron 16.000 Tms de mineral.",
+    "respuesta": "El 2024-01-13 en el turno B se extrajeron 653 Tms de mineral.",
+    "precision": 0.9166666666666666,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.9166666666666666
+  },
+  {
+    "id": 15,
+    "consulta": "¿Cuánto lastre se extrajo el 2024-01-14 en el turno A?",
+    "referencia": "El 2024-01-14 en el turno A se extrajeron 90.300 Tms de lastre.",
+    "respuesta": "Se extrajeron 214.451 Tms de lastre en esa fecha y turno.",
+    "precision": 0.6363636363636364,
+    "cobertura": 0.5833333333333334,
+    "f1": 0.6086956521739131
+  },
+  {
+    "id": 16,
+    "consulta": "¿Cuál fue el movimiento total de mina el 2024-01-15 en el turno B?",
+    "referencia": "El movimiento total de mina fue de 268.400 Tms.",
+    "respuesta": "El movimiento total fue de 251.634 Tms.",
+    "precision": 0.8571428571428571,
+    "cobertura": 0.6666666666666666,
+    "f1": 0.75
+  },
+  {
+    "id": 17,
+    "consulta": "¿Cuánto material alimentó el chancado el 2024-01-16 en el turno A?",
+    "referencia": "La alimentación a chancado fue de 61.500 Tms.",
+    "respuesta": "La alimentación a chancado el 2024-01-16 en el turno A fue de 41.095 Tms.",
+    "precision": 0.5,
+    "cobertura": 0.875,
+    "f1": 0.6363636363636364
+  },
+  {
+    "id": 18,
+    "consulta": "¿Cuánto mineral se extrajo el 2024-01-17 en el turno B?",
+    "referencia": "El 2024-01-17 en el turno B se extrajeron 14.100 Tms de mineral.",
+    "respuesta": "El 2024-01-17 en el turno B se extrajeron 14.890 Tms de mineral.",
+    "precision": 0.9166666666666666,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.9166666666666666
+  },
+  {
+    "id": 19,
+    "consulta": "¿Cuánto lastre se extrajo el 2024-01-18 en el turno A?",
+    "referencia": "El 2024-01-18 en el turno A se extrajeron 87.900 Tms de lastre.",
+    "respuesta": "Se extrajeron 118.226 Tms de lastre en el turno A.",
+    "precision": 0.9,
+    "cobertura": 0.75,
+    "f1": 0.8181818181818182
+  },
+  {
+    "id": 20,
+    "consulta": "¿Cuál fue el movimiento total de mina el 2024-01-19 en el turno B?",
+    "referencia": "El movimiento total de mina fue de 255.800 Tms.",
+    "respuesta": "El movimiento total de mina fue de 233.039 Tms.",
+    "precision": 0.8888888888888888,
+    "cobertura": 0.8888888888888888,
+    "f1": 0.8888888888888888
+  }
+]
