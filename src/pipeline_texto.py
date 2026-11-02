@@ -2,8 +2,8 @@ from cliente import consultar_modelo
 from pipeline_limpieza import procesar_texto
 
 
-consulta = "¿Qué es Python?"
-referencia = "Python es un lenguaje de programación interpretado."
+consulta = "¿Cuánto mineral se extrajo el 2024-01-03 en el turno B?"
+referencia = "El 2024-01-03 en el turno B se extrajeron 14.707 Tms de mineral."
 respuesta = consultar_modelo(consulta)
 
 crudo_ref = referencia.split()

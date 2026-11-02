@@ -10,7 +10,7 @@ import re
 load_dotenv()
 
 # Constantes
-MODELO = "gemini-3.6-flash"
+MODELO = "gemini-3.5-flash-lite"
 URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -38,33 +38,30 @@ def armar_peticion(modelo, pregunta, system_instruction, response_schema=None):
 
 
 # Función que envía la petición (con reintentos en errores temporales)
-def enviar_peticion(url, body, reintentos=3):
-    if not API_KEY:
-        raise RuntimeError("No se encontró GEMINI_API_KEY. Revisa tu archivo .env")
+def enviar_peticion(url, body):
+    try:
+        respuesta = requests.post(url, json=body, timeout=30)
+    except requests.exceptions.ConnectionError:
+        raise RuntimeError("No se pudo conectar con el servicio. Intenta de nuevo en unos momentos.")
+    except requests.exceptions.Timeout:
+        raise RuntimeError("Se agotó el tiempo. Intenta de nuevo en unos momentos.")
 
-    for intento in range(1, reintentos + 1):
-        try:
-            respuesta = requests.post(url, json=body, timeout=30)
-        except requests.exceptions.ConnectionError:
-            raise RuntimeError("No se pudo conectar con el servicio. Intenta de nuevo en unos momentos.")
-        except requests.exceptions.Timeout:
-            raise RuntimeError("Se agotó el tiempo. Intenta de nuevo en unos momentos.")
+    if respuesta.status_code in(401, 403):
+        raise ValueError("Credencial inválida o sin permiso. Revisa tu GEMINI_API_KEY")
+    if respuesta.status_code >= 500:
+        raise TimeoutError("El proveedor no pudo procesar la petición. Hay que esperar y reintentar")
+    if respuesta.status_code == 429:
+        segundos = respuesta.headers.get("Retry-After")
+        mensaje = f"Límite excedido. Reintentar en {segundos}s." if segundos else "Límite excedido."
+        raise TimeoutError(mensaje)
+        
+    if respuesta.status_code != 200:
+        raise RuntimeError(f"Error en la petición. Status Code: {respuesta.status_code}")
 
-        if respuesta.status_code == 200:
-            try:
-                return respuesta.json()
-            except requests.exceptions.JSONDecodeError:
-                raise RuntimeError("La respuesta del servicio no llegó en el formato esperado.")
-
-        # Errores temporales: esperar y reintentar
-        if respuesta.status_code in (429, 500, 503) and intento < reintentos:
-            espera = 2 ** intento  # 2s, 4s
-            print(f"  Status {respuesta.status_code}, reintentando en {espera}s...")
-            time.sleep(espera)
-            continue
-
-        # Error definitivo: mostramos el motivo que entrega Google
-        raise RuntimeError(f"Error {respuesta.status_code}: {respuesta.text}")
+    try:
+        return respuesta.json()
+    except requests.exceptions.JSONDecodeError:
+        raise RuntimeError("La respuesta del servicio no llegó en el formato esperado.")
 
 # Función que procesa y extrae el dato
 def extraer_texto(datos):  # Gemini
@@ -73,6 +70,32 @@ def extraer_texto(datos):  # Gemini
     except (KeyError, IndexError):
         raise RuntimeError("La respuesta no recibe el texto generado en el lugar definido.")
 
+def obtener_dato_de_prueba(pregunta, modelo=MODELO):
+    response_schema = {
+        "type": "OBJECT",
+        "properties": {
+            "categoria": {"type": "STRING"},
+            "nivel": {"type": "NUMBER"}
+        },
+        "required": ["categoria", "nivel"]
+    }
+
+    system_instruction = "Eres un asistente amigable y respondes en máximo 2 palabras."
+    url, body = armar_peticion(modelo, pregunta, system_instruction, response_schema)
+
+    inicio = time.perf_counter()
+    datos = enviar_peticion(url, body)
+    fin = time.perf_counter()
+    latencia = time.perf_counter() - inicio
+    print(f"Latencia: {latencia:.2f} segundos")
+    
+
+    costo = calcular_costo(datos, 0.0000003, 0.0000025)
+    print(f"Costo de la petición: ${costo:.6f} USD")
+
+    texto = extraer_texto(datos)
+    datos_formateados = parsear_respuesta_json(texto, ["categoria", "nivel"])
+    return datos_formateados
 
 def calcular_costo(datos, precio_entrada, precio_salida):
     uso = datos.get("usageMetadata", {})
@@ -81,7 +104,6 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     tokens_razonamiento = uso.get("thoughtsTokenCount", 0)  # si no existe, es 0
     costo = (tokens_entrada * precio_entrada) + ((tokens_salida + tokens_razonamiento) * precio_salida)
     return costo
-
 
 def parsear_respuesta_json(texto, claves_requeridas=None):
     """
@@ -100,32 +122,6 @@ def parsear_respuesta_json(texto, claves_requeridas=None):
         if faltantes:
             raise ValueError("La respuesta no tiene la estructura esperada.")
     return datos
-
-
-def obtener_dato_de_prueba(pregunta, modelo=MODELO):
-    response_schema = {
-        "type": "OBJECT",
-        "properties": {
-            "categoria": {"type": "STRING"},
-            "nivel": {"type": "NUMBER"}
-        },
-        "required": ["categoria", "nivel"]
-    }
-
-    system_instruction = "Eres un asistente amigable y respondes en máximo 2 palabras."
-    url, body = armar_peticion(modelo, pregunta, system_instruction, response_schema)
-
-    inicio = time.perf_counter()
-    datos = enviar_peticion(url, body)
-    latencia = time.perf_counter() - inicio
-    print(f"Latencia: {latencia:.2f} segundos")
-
-    costo = calcular_costo(datos, 0.00000075, 0.00000375)
-    print(f"Costo de la petición: ${costo:.6f} USD")
-
-    texto = extraer_texto(datos)
-    return parsear_respuesta_json(texto, ["categoria", "nivel"])
-
 
 if __name__ == "__main__":  # Solo se ejecuta si corres este archivo directamente, no en imports
     try:

@@ -19,11 +19,15 @@ def evaluar_modelo(nombre_modelo, pregunta, precio_entrada, precio_salida, repet
         
         # 1. Armar petición (puedes pasar el modelo si tu función lo requiere)
         system_instruction = (
-            "Eres un asistente especializado en análisis de operaciones mineras. "
-            "Analiza los indicadores, identifica desviaciones y explica sus posibles causas. "
+            "Eres un asistente especializado en producción y operación de mina a cielo abierto. "
+            "Analizas extracción de mineral, lastre, movimiento total, remanejo y alimentación a chancado, "
+            "medidos en Tms por turno y grupo. "
+            "Identifica desviaciones respecto al plan y explica sus posibles causas operacionales. "
             "Si faltan datos, indícalo explícitamente y no inventes información. "
-            "Responde de forma clara, técnica y concisa."
+            "Responde de forma clara, técnica y concisa, usando siempre la unidad Tms."
         )
+
+        
 
         url, body = consumir_gemini.armar_peticion(
             nombre_modelo, pregunta, system_instruction
@@ -61,10 +65,10 @@ def evaluar_modelo(nombre_modelo, pregunta, precio_entrada, precio_salida, repet
 
 
 pregunta_prueba = (
-    "Una planta minera procesa 1.000 toneladas de mineral por hora. "
-    "La meta de procesamiento es de 1.200 toneladas por hora. "
-    "Calcula la desviación porcentual respecto a la meta, indica si existe "
-    "una desviación negativa y explica brevemente el resultado."
+    "El 2024-01-05, en el turno A, el grupo G4 registró una extracción total de "
+    "206.237 Tms. La meta del plan para ese turno es de 200.000 Tms. "
+    "Calcula la desviación porcentual respecto a la meta, indica si es positiva "
+    "o negativa y explica brevemente el resultado."
 )
 
 modelos = [
