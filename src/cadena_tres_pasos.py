@@ -55,7 +55,7 @@ def disponibilidad_camiones(df):
             modelo = col.split("|")[1]
             nominal = df[col.replace("Hrs Disp", "Hrs Nominal")].sum()
             filas.append({"camion": modelo,
-                          "disponibilidad_pct": df[col].sum() / nominal * 100})
+                          "disponibilidad_pct": round(df[col].sum() / nominal * 100, 1)})
     return pd.DataFrame(filas).sort_values("disponibilidad_pct")
 
 
